@@ -1,0 +1,102 @@
+/*
+ * Tokens TQS.
+ * Tailwind 4 lit ce bloc @theme : chaque variable devient une utilité (bg-surface, text-muted,
+ * rounded-md, shadow-pop, ease-out, h-topbar…). Les composants n'utilisent jamais de hex brut.
+ * Texte courant : contraste WCAG AA (4.5:1) sur bg et surface.
+ */
+@theme {
+  /* on retire la palette par défaut de Tailwind : seuls les rôles TQS existent */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* fonds et surfaces */
+  --color-bg: #1E2229;
+  --color-sunken: #181B21;
+  --color-surface: #2A2F3A;
+  --color-raised: #333946;
+  --color-border: #3A404D;
+  --color-border-strong: #555C6A;
+  --color-border-input: #8C93A0;
+
+  /* texte */
+  --color-text: #E2E8F0;
+  --color-text-secondary: #A9B0BC; /* petit corps sur surface / raised */
+  --color-text-muted: #8C93A0; /* petit corps sur bg uniquement */
+
+  /* accent */
+  --color-accent: #0066FF; /* fonds de boutons, jamais du texte */
+  --color-accent-hover: #0057D9;
+  --color-accent-bright: #0084FF; /* focus, indicateur actif, graphiques */
+  --color-accent-text: #66AEFF; /* liens en petit corps */
+  --color-accent-soft: #122A4D;
+  --color-on-accent: #FFFFFF;
+
+  /* sémantique */
+  --color-success: #3DD68C;
+  --color-success-soft: #173A2C;
+  --color-warning: #F5B544;
+  --color-warning-soft: #3A2F17;
+  --color-danger: #FF7A7A;
+  --color-danger-strong: #C42B36;
+  --color-danger-soft: #43222A;
+  --color-danger-soft-text: #FF8A8A;
+  --color-info: #7CB8FF;
+  --color-info-soft: #15304F;
+  --color-violet: #C4B5FD;
+  --color-violet-soft: #2F2A4A;
+  --color-teal: #5EE0C8; /* source « manuelle » de la présence */
+  --color-teal-soft: #163A37;
+  --color-chart-collected: #26A88F; /* 2e série des graphiques (« encaissé »), validée avec accent-bright sur surface */
+  --color-neutral-soft: #3A404D;
+  --color-neutral-soft-text: #C9CFD9;
+  --color-paper: #F5F7FA; /* aperçu d'une image telle qu'imprimée (logo, cachet) */
+  --color-paper-muted: #5B6270;
+
+  /* typographie (variables posées par next/font dans src/app/layout.tsx) */
+  --font-sans: var(--font-plex-sans), system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+
+  --text-2xs: 11px;
+  --text-2xs--line-height: 16px;
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 13px;
+  --text-sm--line-height: 20px;
+  --text-base: 14px;
+  --text-base--line-height: 22px;
+  --text-md: 16px;
+  --text-md--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 26px;
+  --text-xl: 22px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 28px;
+  --text-2xl--line-height: 34px;
+  --text-display: 40px;
+  --text-display--line-height: 44px;
+
+  /* rayons */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* ombres : sur fond sombre, la profondeur vient surtout du liseré clair */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-pop: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 12px 32px -4px rgba(0, 0, 0, 0.55);
+
+  /* mouvement (Emil Kowalski : courbes fortes, < 300 ms) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* gabarit */
+  --spacing-topbar: 56px;
+  --spacing-sidebar: 240px;
+  --spacing-sidebar-collapsed: 64px;
+  --spacing-map-mobile: 320px; /* carte Live (S53) */
+  --spacing-map: 448px;
+  --container-content: 1440px;
+}

@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg font-sans text-base text-text antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* barres de défilement fines et sombres (Chromium, Firefox) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+  }
+
+  ::selection {
+    @apply bg-accent text-on-accent;
+  }
+
+  /* un seul anneau de focus, partout : 2 px accent-bright détaché du composant (>= 3:1) */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-bright);
+    outline-offset: 2px;
+  }
+
+  /* chiffres alignés dans les tables, KPI et montants */
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  /* moins de mouvement = pas de déplacement, mais on garde les fondus utiles */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+    .motion-safe-transform {
+      transform: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* retour de pression (Emil) : toute surface cliquable */
+  .pressable {
+    transition-property: transform, background-color, border-color, color, box-shadow;
+    transition-duration: 140ms;
+    transition-timing-function: var(--ease-out);
+  }
+  .pressable:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: scale(0.97);
+  }
+
+  /* entrée des popovers et modales sans JS (fallback : apparition directe) */
+  .pop-in {
+    transition:
+      opacity 150ms var(--ease-out),
+      transform 150ms var(--ease-out),
+      overlay 150ms allow-discrete,
+      display 150ms allow-discrete;
+    @starting-style {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-surface) 0%, var(--color-raised) 50%, var(--color-surface) 100%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.4s linear infinite;
+  }
+}
+
