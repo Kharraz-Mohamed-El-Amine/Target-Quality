@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChartColumn, ClipboardCheck, Crosshair, ListChecks } from "lucide-react";
+import { ArrowRight, ChartColumn, ClipboardCheck, Clock, Crosshair, ListChecks, Mail } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
+import { ContactForm } from "./_landing/contact-form";
 import { CountUp } from "./_landing/count-up";
 import { HeroPreview } from "./_landing/hero-preview";
 import "./_landing/landing.css";
@@ -20,7 +21,10 @@ const NAV = [
   { href: "#plateforme", label: "Plateforme" },
   { href: "#chiffres", label: "Chiffres clés" },
   { href: "#services", label: "Services" },
+  { href: "#contact", label: "Contact" },
 ];
+
+const CONTACT_EMAIL = "contact@targetquality.net";
 
 const SERVICES = [
   {
@@ -198,6 +202,42 @@ export default function Home() {
               <p className="lp-lead mt-3">Connectez-vous au portail pour suivre vos missions, vos rapports et votre conformité.</p>
             </div>
             <PortalCta size="lg" />
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" aria-labelledby="contact-titre" className="lp-container grid gap-10 pb-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14 lg:pb-28">
+          <div>
+            <p className="lp-eyebrow">Contactez-nous</p>
+            <h2 id="contact-titre" className="lp-h2 mt-3">
+              Parlons de vos enjeux qualité.
+            </h2>
+            <p className="lp-lead mt-4">Un tri urgent, un audit à planifier, une question sur le portail : décrivez votre besoin, notre équipe vous répond.</p>
+            <ul className="mt-8 flex flex-col gap-4">
+              <li className="flex items-center gap-3">
+                <span className="lp-card-icon shrink-0">
+                  <Mail className="size-5" aria-hidden />
+                </span>
+                <span className="flex min-w-0 flex-col">
+                  <span className="text-sm text-text-secondary">Par e-mail</span>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="truncate text-md font-medium text-accent-text underline-offset-4 hover:underline">
+                    {CONTACT_EMAIL}
+                  </a>
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="lp-card-icon shrink-0">
+                  <Clock className="size-5" aria-hidden />
+                </span>
+                <span className="flex flex-col">
+                  <span className="text-sm text-text-secondary">Suivi de vos missions</span>
+                  <span className="text-md font-medium text-text">En temps réel sur le portail, 24/7</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div className="lp-glass relative rounded-lg p-6 sm:p-8">
+            <ContactForm email={CONTACT_EMAIL} />
           </div>
         </section>
       </main>

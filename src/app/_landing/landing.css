@@ -358,3 +358,37 @@ html:has(.lp) {
     transform: none;
   }
 }
+
+/* champs du formulaire de contact : 16 px au moins (pas de zoom automatique sur iOS) */
+.lp-input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: color-mix(in oklab, var(--color-sunken) 75%, transparent);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 24px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+textarea.lp-input {
+  resize: vertical;
+  min-height: 132px;
+}
+.lp-input:focus-visible {
+  outline: none;
+  border-color: var(--color-accent-bright);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent-bright) 35%, transparent);
+}
+.lp-input[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+@media (hover: hover) and (pointer: fine) {
+  .lp-input:hover:not(:focus-visible):not([aria-invalid="true"]) {
+    border-color: var(--color-border-input);
+  }
+}
